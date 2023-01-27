@@ -1,0 +1,71 @@
+#=================================================================================================
+# JSX
+
+snippet sinput "Input two-way binding" b
+<input type="${1:text}" value={${2:value}()} onInput={e => ${3:setValue}(e.currentTarget.value)}/>
+endsnippet
+
+#=================================================================================================
+# Components
+
+snippet scomp "Solid empty function component" b
+const ${1:`!v expand('%:t:r')`}: Component<{$2}> = (props) => {
+  $0
+  return <div></div>;
+};
+endsnippet
+
+#=================================================================================================
+# Context
+
+snippet sctxp "Solid Context Provider component" b
+import { createContext, useContext, ParentComponent } from "solid-js";
+import { createStore } from "solid-js/store";
+
+const defaultState = {};
+
+const ${1:`!v expand('%:t:r')`}Context = createContext<[state: typeof defaultState, actions: {}]>([
+  defaultState,
+  {},
+]);
+
+export const $1Provider: ParentComponent = (props) => {
+  const [state, setState] = createStore(defaultState);
+
+  return (
+    <$1Context.Provider value={[state, {}]}>
+      {props.children}
+    </$1Context.Provider>
+  );
+};
+
+export const use$1 = () => useContext($1Context);
+endsnippet
+
+#=================================================================================================
+# Reactivity
+
+snippet ssig "Simple createSignal" b
+const [${1:state}, set${1/\w+/\u$0/g}] = createSignal($2);
+endsnippet
+
+snippet seff "Simple createEffect" b
+createEffect(() => {
+	const value = ${1:source}();
+	$0
+});
+endsnippet
+
+snippet seffon "createEffect with explicit sources" b
+createEffect(on(${1:source}, (value, prev) => {
+	$0
+}));
+endsnippet
+
+snippet smemo "Simple createMemo" b
+const ${1:value} = createMemo(() => $0);
+endsnippet
+
+snippet smemoon "createMemo with explicit sources" b
+const ${1:value} = createMemo(on(${2:value}, (value, prev) => $0));
+endsnippet
