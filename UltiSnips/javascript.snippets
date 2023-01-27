@@ -30,5 +30,26 @@ export function use$1() {
 endsnippet
 
 snippet ssig "Simple createSignal" b
-	const [${1:state}, set${1/\w+/\u$0/g}] = createSignal($2);
+const [${1:state}, set${1/\w+/\u$0/g}] = createSignal($2);
+endsnippet
+
+snippet seff "Simple createEffect" b
+createEffect(() => {
+	const value = ${1:source}();
+	$0
+});
+endsnippet
+
+snippet seffon "createEffect with explicit sources" b
+createEffect(on(${1: source}, (value, prev) => {
+	$0
+}));
+endsnippet
+
+snippet smemo "Simple createMemo" b
+const ${1:value} = createMemo(() => $0);
+endsnippet
+
+snippet smemoon "createMemo with explicit sources" b
+const ${1:value} = createMemo(on(${2:value}, (value, prev) => $0));
 endsnippet
