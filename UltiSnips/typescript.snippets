@@ -11,7 +11,101 @@ endsnippet
 snippet scomp "Solid empty function component" b
 const ${1:`!v expand('%:t:r')`}: Component<{$2}> = (props) => {
   $0
+  return <div>$1</div>;
+};
+endsnippet
+
+snippet spcomp "Solid empty Parent Component" b
+const ${1:`!v expand('%:t:r')`}: ParentComponent<{$2}> = (props) => {
+  $0
+  return <div>{props.children}</div>;
+};
+endsnippet
+
+snippet sfcomp "Solid empty Flow Component" b
+const ${1:`!v expand('%:t:r')`}: FlowComponent<{$2}, ${3:JSX.Element}> = (props) => {
+  $0
+  return <div>{props.children}</div>;
+};
+endsnippet
+
+snippet svcomp "Solid empty Void Component" b
+const ${1:`!v expand('%:t:r')`}: VoidComponent<{$2}> = (props) => {
+  $0
   return <div></div>;
+};
+endsnippet
+
+snippet scompi "Solid empty function component with imports" b
+import { Component } from "solid-js";
+
+const ${1:`!v expand('%:t:r')`}: Component<{$2}> = (props) => {
+  $0
+  return <div></div>;
+};
+endsnippet
+
+snippet scompie "Solid empty function component with imports and default export" b
+import { Component } from "solid-js";
+
+const ${1:`!v expand('%:t:r')`}: Component<{$2}> = (props) => {
+  $0
+  return <div></div>;
+};
+
+export default $1;
+endsnippet
+
+snippet spcompi "Solid empty Parent Component with imports" b
+import { ParentComponent } from "solid-js";
+
+const ${1:`!v expand('%:t:r')`}: ParentComponent<{$2}> = (props) => {
+  $0
+  return <div>{props.children}</div>;
+};
+endsnippet
+
+snippet sfcompi "Solid empty Flow Component with imports" b
+import { FlowComponent, JSX } from "solid-js";
+
+const ${1:`!v expand('%:t:r')`}: FlowComponent<{$2}, ${3:JSX.Element}> = (props) => {
+  $0
+  return <div>{props.children}</div>;
+};
+endsnippet
+
+snippet svcompi "Solid empty void component with imports" b
+import { FlowComponent, JSX } from "solid-js";
+
+const ${1:`!v expand('%:t:r')`}: FlowComponent<{$2}, ${3:JSX.Element}> = (props) => {
+  $0
+  return <div>{props.children}</div>;
+};
+endsnippet
+
+snippet shtmlcomp "Component extending an HTML element" b
+const ${1:`!v expand('%:t:r')`}: ParentComponent<
+  ComponentProps<"${2:div}"> & {
+    $0
+  }
+> = (props) => {
+  const [local, attrs] = splitProps(props, []);
+
+  return <${2:div} {...attrs}>{props.children}</${2:div}>;
+};
+endsnippet
+
+snippet shtmlcompi "Component extending an HTML element with imports"
+import { ParentComponent, splitProps, ComponentProps } from "solid-js";
+
+const ${1:`!v expand('%:t:r')`}: ParentComponent<
+  ComponentProps<"${2:div}"> & {
+    $0
+  }
+> = (props) => {
+  const [local, attrs] = splitProps(props, []);
+
+  return <${2:div} {...attrs}>{props.children}</${2:div}>;
 };
 endsnippet
 
