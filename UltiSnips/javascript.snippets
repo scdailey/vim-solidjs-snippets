@@ -28,3 +28,7 @@ export function use$1() {
 	return useContext($1Context);
 }
 endsnippet
+
+snippet ssig "Simple createSignal" b
+	const [${1:state}, set${1/\w+/\u$0/g}] = createSignal($2);
+endsnippet
