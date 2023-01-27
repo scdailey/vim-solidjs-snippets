@@ -1,3 +1,11 @@
+#=================================================================================================
+# JSX
+
+snippet sinput "Input two-way binding" b
+<input type="${1:text}" value={${2:value}()} onInput={e => ${3:setValue}(e.currentTarget.value)}/>
+endsnippet
+
+#=================================================================================================
 # Components
 
 snippet scomp "Base for an empty solidJS component" b
@@ -9,6 +17,9 @@ function ${1:`!v expand('%:t:r')`}() {
 }
 export default $1;
 endsnippet
+
+#=================================================================================================
+# Context
 
 snippet sctxp "Solid Context Provider component" b
 import { createContext, createSignal, useContext } from "solid-js";
@@ -29,6 +40,9 @@ export function use$1() {
 }
 endsnippet
 
+#=================================================================================================
+# Reactivity
+
 snippet ssig "Simple createSignal" b
 const [${1:state}, set${1/\w+/\u$0/g}] = createSignal($2);
 endsnippet
@@ -41,7 +55,7 @@ createEffect(() => {
 endsnippet
 
 snippet seffon "createEffect with explicit sources" b
-createEffect(on(${1: source}, (value, prev) => {
+createEffect(on(${1:source}, (value, prev) => {
 	$0
 }));
 endsnippet
