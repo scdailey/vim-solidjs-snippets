@@ -6,8 +6,8 @@ Use your favorite vim plugin manager to install UltiSnips and the SolidJS snippe
 
 ```vim
 call plug#begin('~/.vim/plugged')
-Plug 'SirVer/ultisnips'
-Plug 'scdailey/vim-solidjs-snippets'
+  Plug 'SirVer/ultisnips'
+  Plug 'scdailey/vim-solidjs-snippets'
 call plug#end()
 ```
 
