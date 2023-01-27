@@ -1,0 +1,11 @@
+# Components
+
+snippet scomp "Base for an empty solidJS component" b
+function {expand('%:t:r:s?\.jsx$??')} {
+  $1
+  return (
+    <div>expand('%:t:r:s?\.jsx$??')</div>
+  );
+}
+export default expand('%:t:r:s?\.jsx$??');
+endsnippet
