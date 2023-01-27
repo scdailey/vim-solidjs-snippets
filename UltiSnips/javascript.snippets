@@ -2,10 +2,29 @@
 
 snippet scomp "Base for an empty solidJS component" b
 function ${1:`!v expand('%:t:r')`}() {
-	$1
+	$0
 	return (
 		<div>$1</div>
 	);
 }
 export default $1;
+endsnippet
+
+snippet 
+import { createContext, createSignal, useContext } from "solid-js";
+
+const ${1:`!v expand('%:t:r')`}Context = createContext();
+
+export function $1Provider(props) {
+	const [$1, set$1] = createSignal(props.$1 || ""),
+		store = [$1, set$1];
+
+	return (
+		<$1Context.Provider value={store}>{props.children}</$1Context.Provider>
+	);
+}
+
+export function use$1() {
+	return useContext($1Context);
+}
 endsnippet
